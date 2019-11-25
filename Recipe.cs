@@ -20,8 +20,10 @@ namespace LemonadeStand_3DayStarter
 
         public void AmountOfLemons()
         {
-            Console.WriteLine("Please enter the number of lemons for your secret recipe!");
-            amountOfLemons = Convert.ToInt32(Console.ReadLine().Trim());
+             amountOfLemons = UserInterface.AmountOfLemons();
+
+            //Console.WriteLine("Please enter the number of lemons for your secret recipe!");
+            //amountOfLemons = Convert.ToInt32(Console.ReadLine().Trim());
         }
 
         public void AmountOfSugarCubes()

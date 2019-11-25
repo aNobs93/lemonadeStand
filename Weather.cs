@@ -10,7 +10,7 @@ namespace LemonadeStand_3DayStarter
     {
         public string condition;
         public int temperature;
-        private List<string> weatherConditions = new List<string>() {"Cloudy", "Rainy", "Overcast", "Humid/Rainy", "Clear Skies", "Muggy" };
+        private List<string> weatherConditions = new List<string>() {"Cloudy", "Rainy", "Overcast", "Hot", "Clear Skies", "Hazy" };
         private List<int> weatherTemperature = new List<int>() {61, 92, 82, 55, 46, 102, 34, 49 };
         public Random rnd = new Random();
         public void ChooseWeather()

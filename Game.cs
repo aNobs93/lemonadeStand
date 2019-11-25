@@ -22,9 +22,6 @@ namespace LemonadeStand_3DayStarter
             
         }
 
-        public void GameInstructions()
-        {
-            Console.WriteLine("");
-        }
+
     }
 }

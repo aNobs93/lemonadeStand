@@ -14,14 +14,14 @@ namespace LemonadeStand_3DayStarter
         {
             cupsLeftInPitcher = 0;
         }
-        public void CupsLeftInPitcher()
-        {
 
-        }
 
         public void CreatePitcher(Recipe recipe, Inventory inventory)
         {
-
+            inventory.lemons.RemoveRange(0, recipe.amountOfLemons);
+            inventory.sugarCubes.RemoveRange(0, recipe.amountOfSugarCubes);
+            inventory.iceCubes.RemoveRange(0, 15 * recipe.amountOfIceCubes);
+            cupsLeftInPitcher = 15;
         }
     }
 }

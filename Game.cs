@@ -19,6 +19,7 @@ namespace LemonadeStand_3DayStarter
 
         public void RunGame()
         {
+            UserInterface.GameInstructions();
             
         }
 

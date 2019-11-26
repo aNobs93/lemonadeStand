@@ -16,6 +16,11 @@ namespace LemonadeStand_3DayStarter
             name = "lemon";
         }
 
+        public void SpoiledLemons()
+        {
+
+        }
+
         // member methods (CAN DO)
     }
 }

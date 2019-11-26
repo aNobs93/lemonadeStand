@@ -28,20 +28,17 @@ namespace LemonadeStand_3DayStarter
 
         public void AmountOfSugarCubes()
         {
-            Console.WriteLine("Please enter the number of sugarcubes for your secret recipe!");
-            amountOfSugarCubes = Convert.ToInt32(Console.ReadLine().Trim());
+            amountOfSugarCubes = UserInterface.AmountOfSugarCubes();
         }
 
         public void AmountOfIceCubes()
         {
-            Console.WriteLine("Please enter the number of ice cubes per cup for your secret recipe!");
-            amountOfIceCubes = Convert.ToInt32(Console.ReadLine().Trim());
+            amountOfIceCubes = UserInterface.AmountOfIceCubes();
         }
 
         public void PricePerCup()
         {
-            Console.WriteLine("Please enter your price per cup!");
-            pricePerCup = Convert.ToInt32(Console.ReadLine().Trim());
+            pricePerCup = UserInterface.PricePerCup();
         }
 
     }

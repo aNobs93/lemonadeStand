@@ -16,6 +16,11 @@ namespace LemonadeStand_3DayStarter
             name = "ice cube";
         }
 
+        public void EndDayMeltIce()
+        {
+
+        }
+
         // member methods (CAN DO)
     }
 }

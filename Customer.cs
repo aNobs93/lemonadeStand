@@ -17,22 +17,32 @@ namespace LemonadeStand_3DayStarter
 
         public Customer()
         {
-
+            ChooseName();
+            CustomerPref();
         }
 
         public void ChooseName()
         {
             int n = rnd.Next(0, 29);
             name = names[n];
-
+         
         }
 
         public void CustomerPref()
         {
-            lemonPref = rnd.Next(0, 20);
-            sugarPref = rnd.Next(0, 20);
+            lemonPref = rnd.Next(0, 10);
+            sugarPref = rnd.Next(0, 10);
             tempPref = rnd.Next(30, 110);
 
+        }
+
+        public bool DidCustomerBuy(Recipe recipe, Weather weather)
+        {
+            if(recipe.amountOfLemons >= lemonPref - 3 && recipe.amountOfSugarCubes >= sugarPref -3 && weather.temperature >= tempPref - 20 && weather.temperature <= tempPref + 20)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

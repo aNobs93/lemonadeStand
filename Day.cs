@@ -22,21 +22,14 @@ namespace LemonadeStand_3DayStarter
                 
             }
         }
-        public void RunDay(Player player, Store store )
+        public void RunDay(Player player, Store store)
         {
 
             UserInterface.DisplayInventory(player.inventory);
             UserInterface.StoreMenu(player, store);
             UserInterface.DisplayInventory(player.inventory);
-            UserInterface.AmountOfSugarCubes();
-            UserInterface.AmountOfIceCubes();
-            UserInterface.AmountOfLemons();
-            
-            //DAy logic here.
+            player.recipe.SetUpRecipe();
 
-            //1 go to store
-
-            //2 
 
 
 
@@ -44,6 +37,19 @@ namespace LemonadeStand_3DayStarter
         public void TakeCup()
         {
 
+        }
+
+        public void SellLemonade(Player player)
+        {
+            for (int i = 0; i < customers.Count; i++)
+            {
+                if(customers[i].DidCustomerBuy(player.recipe, weather))
+                {
+
+                    //sell cup
+                }
+
+            }
         }
 
     }

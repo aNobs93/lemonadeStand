@@ -81,7 +81,7 @@ namespace LemonadeStand_3DayStarter
         public static double PricePerCup(Inventory inventory)
         {
             Console.WriteLine("Please enter your price per cup!");
-            double pricePerCup = Convert.ToInt32(Console.ReadLine().Trim());
+            double pricePerCup = Convert.ToDouble(Console.ReadLine().Trim());
             return pricePerCup;
         }
 

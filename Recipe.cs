@@ -14,10 +14,7 @@ namespace LemonadeStand_3DayStarter
         public double pricePerCup;
         Inventory inventory;
 
-        public Recipe(Inventory inventory)
-        {
-            this.inventory = inventory;
-        }
+        public Recipe(Inventory inventory) => this.inventory = inventory;
         public void SetUpRecipe()
         {
             AmountOfSugarCubes();
@@ -25,28 +22,13 @@ namespace LemonadeStand_3DayStarter
             AmountOfIceCubes();
             PricePerCup();
         }
-        public void AmountOfLemons()
-        {
-             amountOfLemons = UserInterface.AmountOfLemons(inventory);
+        public void AmountOfLemons() => amountOfLemons = UserInterface.AmountOfLemons(inventory);//Console.WriteLine("Please enter the number of lemons for your secret recipe!");//amountOfLemons = Convert.ToInt32(Console.ReadLine().Trim());
 
-            //Console.WriteLine("Please enter the number of lemons for your secret recipe!");
-            //amountOfLemons = Convert.ToInt32(Console.ReadLine().Trim());
-        }
+        public void AmountOfSugarCubes() => amountOfSugarCubes = UserInterface.AmountOfSugarCubes(inventory);
 
-        public void AmountOfSugarCubes()
-        {
-            amountOfSugarCubes = UserInterface.AmountOfSugarCubes(inventory);
-        }
+        public void AmountOfIceCubes() => amountOfIceCubes = UserInterface.AmountOfIceCubes(inventory);
 
-        public void AmountOfIceCubes()
-        {
-            amountOfIceCubes = UserInterface.AmountOfIceCubes(inventory);
-        }
-
-        public void PricePerCup()
-        {
-            pricePerCup = UserInterface.PricePerCup(inventory);
-        }
+        public void PricePerCup() => pricePerCup = UserInterface.PricePerCup(inventory);
 
     }
 }

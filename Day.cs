@@ -24,11 +24,12 @@ namespace LemonadeStand_3DayStarter
         }
         public void RunDay(Player player, Store store)
         {
-
+            UserInterface.DisplayMoney(player);
             UserInterface.DisplayInventory(player.inventory);
             UserInterface.StoreMenu(player, store);
             UserInterface.DisplayInventory(player.inventory);
             player.recipe.SetUpRecipe();
+            SellLemonade(player);
 
 
 
@@ -45,7 +46,8 @@ namespace LemonadeStand_3DayStarter
             {
                 if(customers[i].DidCustomerBuy(player.recipe, weather))
                 {
-
+                    player.inventory.cups.RemoveRange(0, 1);
+                    player.wallet.Money += player.recipe.pricePerCup;
                     //sell cup
                 }
 

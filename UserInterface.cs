@@ -102,15 +102,19 @@ namespace LemonadeStand_3DayStarter
             switch (storeRef)
             {
                 case "lemons":
+                    Console.WriteLine("Lemons are currently $ " + store.PricePerLemon + " each.");
                     store.SellLemons(player);
                     break;
                 case "sugar":
+                    Console.WriteLine("SugarCubes are currently $ " + store.PricePerSugarCube + " each.");
                     store.SellSugarCubes(player);
                     break;
                 case "cubes":
+                    Console.WriteLine("IceCubes are currently $ " + store.PricePerIceCube + " each.");
                     store.SellIceCubes(player);
                     break;
                 case "cups":
+                    Console.WriteLine("Cups are currently $ " + store.PricePerCup + " each.");
                     store.SellCups(player);
                     break;
                 case "start":
@@ -131,6 +135,11 @@ namespace LemonadeStand_3DayStarter
 
             }
                 
+        }
+
+        public static void DisplayMoney(Player player)
+        {
+            Console.WriteLine("You currently have $ " + player.wallet.Money);
         }
 
 

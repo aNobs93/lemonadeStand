@@ -18,13 +18,25 @@ namespace LemonadeStand_3DayStarter
             player = new Player();
             store = new Store();
         }
+        public void BuildDays()
+        {
+            for (int i = 0; i < 7; i++)
+			{
+                Day day = new Day();
+                days.Add(day);
 
+			}
+        }
         public void RunGame()
         {
             UserInterface.GameInstructions();
-            UserInterface.DisplayInventory(player.inventory);
-            store.SellLemons(player);
+            BuildDays();
+               for (int i = 0; i < 7; i++)
+			{
             
+                days[i].RunDay(player, store);
+
+			}
             
         }
 

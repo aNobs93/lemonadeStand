@@ -19,6 +19,7 @@ namespace LemonadeStand_3DayStarter
         public Player()
         {
             inventory = new Inventory();
+            recipe = new Recipe(inventory);
             wallet = new Wallet();
         }
 

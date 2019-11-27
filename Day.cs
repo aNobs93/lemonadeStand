@@ -22,7 +22,25 @@ namespace LemonadeStand_3DayStarter
                 
             }
         }
+        public void RunDay(Player player, Store store )
+        {
 
+            UserInterface.DisplayInventory(player.inventory);
+            UserInterface.StoreMenu(player, store);
+            UserInterface.DisplayInventory(player.inventory);
+            UserInterface.AmountOfSugarCubes();
+            UserInterface.AmountOfIceCubes();
+            UserInterface.AmountOfLemons();
+            
+            //DAy logic here.
+
+            //1 go to store
+
+            //2 
+
+
+
+        }
         public void TakeCup()
         {
 

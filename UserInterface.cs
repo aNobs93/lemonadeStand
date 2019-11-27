@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 namespace LemonadeStand_3DayStarter
 {
     static class UserInterface
-    {
+       
+    { 
+     
         public static int GetNumberOfItems(string itemsToGet)
         {
             bool userInputIsAnInteger = false;
@@ -24,41 +26,62 @@ namespace LemonadeStand_3DayStarter
             return quantityOfItem;
         }
 
-        public static int AmountOfLemons()
-        {
-            Console.WriteLine("Please enter the number of lemons for your secret recipe!");
-            int amountOfLemons = Convert.ToInt32(Console.ReadLine().Trim());
-            return amountOfLemons;
-        }
-
         public static void GameInstructions()
         {
 
-            Console.WriteLine("Welcome to your lemonade stand!\nYou will have 7 days to make as much profit possible!\nYou'll have complete control over you buisness, including pricing, quality control, inventory control, and purchasing supplies.\nBuy your ingredients, set your recipe, and start selling!");
+            Console.WriteLine("Welcome to your lemonade stand!\nYou will have 7 days to make the most profit as possible!\nYou'll have complete control over your buisness, including pricing, quality control, inventory control, and purchasing supplies.\nBuy your ingredients, set your recipe, and start selling!");
             Console.WriteLine("First thing you'll have to worry about is your recipe, make sure you buy enough of all your ingredients, or you won't be able to sell.");
             Console.WriteLine("You'll also have to deal with the weather, which will play a big part when customers are deciding whether or not to buy your lemonade, so make sure to read the weather report every day!");
             Console.WriteLine("When the temperature drops, or the weather turns bad (overcast, cloudy, rain), don't expect them to buy nearly as much as the would on a hot, hazy day, so buy accoringly\nFeel free to set your prices higher on those hot, muggy days too, as you'll make more profit, even if you sell a bit less lemonade.");
 
         }
-
-        public static int AmountOfSugarCubes()
+        public static int AmountOfLemons(Inventory inventory)
         {
-            Console.WriteLine("Please enter the number of sugarcubes for your secret recipe!");
-            int amountOfSugarCubes = Convert.ToInt32(Console.ReadLine().Trim());
-            return amountOfSugarCubes;
+            Console.WriteLine("Please enter the number of lemons for your secret recipe!");
+            int amountOfLemons = Convert.ToInt32(Console.ReadLine().Trim());
+            if (amountOfLemons <= inventory.lemons.Count) 
+            {
+                return amountOfLemons;
+            }
+            else
+            {
+                return AmountOfLemons(inventory);
+            }
         }
 
-        public static int AmountOfIceCubes()
+        public static int AmountOfSugarCubes(Inventory inventory)
+        {
+            Console.WriteLine("Time to make our secret recipe!");
+            Console.WriteLine("Please enter the number of sugarcubes for your secret recipe!");
+            int amountOfSugarCubes = Convert.ToInt32(Console.ReadLine().Trim());
+            if (amountOfSugarCubes <= inventory.sugarCubes.Count)
+            {
+                return amountOfSugarCubes;
+            }
+            else
+            {
+                return AmountOfSugarCubes(inventory);
+            }
+        }
+
+        public static int AmountOfIceCubes(Inventory inventory)
         {
             Console.WriteLine("Please enter the number of ice cubes per cup for your secret recipe!");
             int amountOfIceCubes = Convert.ToInt32(Console.ReadLine().Trim());
-            return amountOfIceCubes;
+            if (amountOfIceCubes <= inventory.iceCubes.Count)
+            {
+                return amountOfIceCubes;
+            }
+            else
+            {
+                return AmountOfIceCubes(inventory);
+            }
         }
 
-        public static int PricePerCup()
+        public static double PricePerCup(Inventory inventory)
         {
             Console.WriteLine("Please enter your price per cup!");
-            int pricePerCup = Convert.ToInt32(Console.ReadLine().Trim());
+            double pricePerCup = Convert.ToInt32(Console.ReadLine().Trim());
             return pricePerCup;
         }
 
@@ -71,27 +94,43 @@ namespace LemonadeStand_3DayStarter
             
         }
 
-        public static void StoreMenu()
+        public static void StoreMenu(Player player, Store store)
         {
-            Console.WriteLine("Welcome to the good ole store what would you like to purchase?\nPlease enter one of the following you would like to purchase.\nLemons/Sugar/IceCubes/Cups or quit to exit game.");
+            Console.WriteLine("Welcome to the good ole store what would you like to purchase?\nPlease enter one of the following you would like to purchase.\nLemons/Sugar/Cubes/Cups/ start to start game or quit to exit game.");
             string storeRef = Console.ReadLine().ToLower().Trim();
+
             switch (storeRef)
             {
-                case "lemon":
+                case "lemons":
+                    store.SellLemons(player);
                     break;
                 case "sugar":
+                    store.SellSugarCubes(player);
                     break;
-                case "icecubes":
+                case "cubes":
+                    store.SellIceCubes(player);
                     break;
                 case "cups":
+                    store.SellCups(player);
+                    break;
+                case "start":
                     break;
                 case "quit":
+                    Environment.Exit(0);
                     break;
                 default:
                     Console.WriteLine("Please try again and enter a valid item");
-                    StoreMenu();
+                    StoreMenu(player, store);
                     break;
+            }if (storeRef != "start")
+            {
+                StoreMenu(player, store);
             }
+            else
+            {
+
+            }
+                
         }
 
 

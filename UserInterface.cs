@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace LemonadeStand_3DayStarter
 {
     static class UserInterface
-       
-    { 
+
+    {
      
         public static int GetNumberOfItems(string itemsToGet)
         {
@@ -33,7 +33,9 @@ namespace LemonadeStand_3DayStarter
             Console.WriteLine("First thing you'll have to worry about is your recipe, make sure you buy enough of all your ingredients, or you won't be able to sell.");
             Console.WriteLine("You'll also have to deal with the weather, which will play a big part when customers are deciding whether or not to buy your lemonade, so make sure to read the weather report every day!");
             Console.WriteLine("When the temperature drops, or the weather turns bad (overcast, cloudy, rain), don't expect them to buy nearly as much as the would on a hot, hazy day, so buy accoringly\nFeel free to set your prices higher on those hot, muggy days too, as you'll make more profit, even if you sell a bit less lemonade.");
-
+            Console.WriteLine("Press enter to continue");
+            Console.ReadLine();
+            Console.Clear();
         }
         public static int AmountOfLemons(Inventory inventory)
         {
@@ -94,52 +96,60 @@ namespace LemonadeStand_3DayStarter
             
         }
 
-        public static void StoreMenu(Player player, Store store)
+        public static double StoreMenu(Player player, Store store)
         {
-            Console.WriteLine("Welcome to the good ole store what would you like to purchase?\nPlease enter one of the following you would like to purchase.\nLemons/Sugar/Cubes/Cups/ start to start game or quit to exit game.");
-            string storeRef = Console.ReadLine().ToLower().Trim();
-
-            switch (storeRef)
+            string storeRef = " ";
+            double amountSpent = 0;
+            while(storeRef != "")
             {
-                case "lemons":
-                    Console.WriteLine("Lemons are currently $ " + store.PricePerLemon + " each.");
-                    store.SellLemons(player);
-                    break;
-                case "sugar":
-                    Console.WriteLine("SugarCubes are currently $ " + store.PricePerSugarCube + " each.");
-                    store.SellSugarCubes(player);
-                    break;
-                case "cubes":
-                    Console.WriteLine("IceCubes are currently $ " + store.PricePerIceCube + " each.");
-                    store.SellIceCubes(player);
-                    break;
-                case "cups":
-                    Console.WriteLine("Cups are currently $ " + store.PricePerCup + " each.");
-                    store.SellCups(player);
-                    break;
-                case "start":
-                    break;
-                case "quit":
-                    Environment.Exit(0);
-                    break;
-                default:
-                    Console.WriteLine("Please try again and enter a valid item");
-                    StoreMenu(player, store);
-                    break;
-            }if (storeRef != "start")
-            {
-                StoreMenu(player, store);
+                Console.WriteLine("Welcome to the good ole store what would you like to purchase?\nPlease enter one of the following you would like to purchase.\nLemons/Sugar/Cubes/Cups/ start to start game or quit to exit game.");
+                 storeRef = Console.ReadLine().ToLower().Trim();
+                switch (storeRef)
+                {
+                    case "lemons":
+                        Console.WriteLine("Lemons are currently $ " + store.PricePerLemon + " each.");
+                        amountSpent += store.SellLemons(player);
+                        break;
+                    case "sugar":
+                        Console.WriteLine("SugarCubes are currently $ " + store.PricePerSugarCube + " each.");
+                        amountSpent += store.SellSugarCubes(player);
+                        break;
+                    case "cubes":
+                        Console.WriteLine("IceCubes are currently $ " + store.PricePerIceCube + " each.");
+                        amountSpent += store.SellIceCubes(player);
+                        break;
+                    case "cups":
+                        Console.WriteLine("Cups are currently $ " + store.PricePerCup + " each.");
+                        amountSpent += store.SellCups(player);
+                        break;
+                    case "start":
+                        storeRef = "";
+                        break;
+                    case "quit":
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        Console.WriteLine("Please try again and enter a valid item");
+                        break;
+                }
             }
-            else
-            {
-
-            }
-                
+            return amountSpent;
         }
 
         public static void DisplayMoney(Player player)
         {
             Console.WriteLine("You currently have $ " + player.wallet.Money);
+        }
+
+        public static void DisplayPopularity(Day day)
+        {
+            Console.WriteLine("Today you had a total of " + day.customers.Count + " pass by your stand.");
+            Console.WriteLine("Out of " + day.customers.Count + ", only " + day.customersBought + " bought your lemonade.");
+        }
+
+        public static void DisplayDailyIncome(Day day)
+        {
+            Console.WriteLine("Your daily income was $ " + day.dailyIncome);
         }
 
 

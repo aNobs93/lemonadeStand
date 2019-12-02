@@ -11,6 +11,9 @@ namespace LemonadeStand_3DayStarter
         public Random rnd = new Random();
         public Weather weather;
         public List<Customer> customers = new List<Customer>() { };
+        public int customersBought;
+        public double dailyIncome;
+        public double MoneySpent;
 
         public void GenerateCustomers()
         {
@@ -35,10 +38,6 @@ namespace LemonadeStand_3DayStarter
 
 
         }
-        public void TakeCup()
-        {
-
-        }
 
         public void SellLemonade(Player player)
         {
@@ -46,12 +45,28 @@ namespace LemonadeStand_3DayStarter
             {
                 if(customers[i].DidCustomerBuy(player.recipe, weather))
                 {
+                    customersBought++;
                     player.inventory.cups.RemoveRange(0, 1);
                     player.wallet.Money += player.recipe.pricePerCup;
                     //sell cup
+                    //Start here on monday, need to keep a running total of money showing proift or loss. i need to make it so i can't go into debt with my wallet and i need to show the popularity of my stand.
                 }
 
             }
+        }
+
+        public void DailyProfit(Player player)
+        {
+            dailyIncome = customersBought * player.recipe.pricePerCup - DailyAmountSpent();
+        }
+
+        public double DailyAmountSpent(Store store)
+        {
+            double dailyAmountSpent = 5;
+
+            return dailyAmountSpent;
+
+
         }
 
     }

@@ -8,6 +8,7 @@ namespace LemonadeStand_3DayStarter
 {
     public class Game
     {
+        private Random random;
         private Store store;
         private Player player;
         private List<Day> days = new List<Day>() {};
@@ -15,6 +16,7 @@ namespace LemonadeStand_3DayStarter
 
         public Game()
         {
+            random = new Random();
             player = new Player();
             store = new Store();
         }
@@ -22,7 +24,7 @@ namespace LemonadeStand_3DayStarter
         {
             for (int i = 0; i < 7; i++)
 			{
-                Day day = new Day();
+                Day day = new Day(random);
                 days.Add(day);
 
 			}
@@ -34,7 +36,7 @@ namespace LemonadeStand_3DayStarter
                for (int i = 0; i < 7; i++)
 			{
             
-                days[i].RunDay(player, store, days[i]);
+                days[i].RunDay(player, store, days[i], player.recipe, player.inventory, random);
 
 			}
             

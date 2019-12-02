@@ -10,13 +10,15 @@ namespace LemonadeStand_3DayStarter
     {
         private List<string> names = new List<string>() {"Pikachu", "Mewtwo", "Eevee", "Celebi", "Ditto", "Snorlax", "Charizard", "Mew", "Charmander", "Gengar", "Bulbasaur", "Rayquaza", "Squirtle", "Dragonite", "Jigglypuff", "Magikarp", "Raichu", "Psyduck", "Pichu", "Vulpix", "Blastoise", "Slowpoke", "Mudkip", "Entei", "Lapras", "Togepi", "Geodude", "Diglett", "Machamp", "Legia"};
         public string name;
-        Random rnd = new Random();
+        //Random rnd = new Random();
         int lemonPref;
         int sugarPref;
         int tempPref;
+        Random rnd;
 
-        public Customer()
+        public Customer(Random random)
         {
+            rnd = random;
             ChooseName();
             CustomerPref();
         }
@@ -38,7 +40,7 @@ namespace LemonadeStand_3DayStarter
 
         public bool DidCustomerBuy(Recipe recipe, Weather weather)
         {
-            if(recipe.amountOfLemons >= lemonPref - 1 && recipe.amountOfSugarCubes >= sugarPref -1 && weather.temperature >= tempPref - 5 || weather.temperature <= tempPref + 5 && recipe.amountOfLemons >= lemonPref - 1 && recipe.amountOfSugarCubes >= sugarPref - 1)
+            if((recipe.amountOfLemons == lemonPref -1 || recipe.amountOfSugarCubes == sugarPref -1) && (weather.temperature >= tempPref - 20 || weather.temperature >= tempPref + 20) )
             {
                 return true;
             }

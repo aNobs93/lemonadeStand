@@ -13,15 +13,19 @@ namespace LemonadeStand_3DayStarter
         public Pitcher()
         {
             cupsLeftInPitcher = 0;
+
         }
 
 
         public void CreatePitcher(Recipe recipe, Inventory inventory)
         {
-            inventory.lemons.RemoveRange(0, recipe.amountOfLemons);
-            inventory.sugarCubes.RemoveRange(0, recipe.amountOfSugarCubes);
-            inventory.iceCubes.RemoveRange(0, 15 * recipe.amountOfIceCubes);
-            cupsLeftInPitcher = 15;
+            if (inventory.lemons.Count >= recipe.amountOfLemons && inventory.sugarCubes.Count >= recipe.amountOfSugarCubes && inventory.iceCubes.Count >= (recipe.amountOfIceCubes * 15))
+            {
+                inventory.lemons.RemoveRange(0, recipe.amountOfLemons);
+                inventory.sugarCubes.RemoveRange(0, recipe.amountOfSugarCubes);
+                inventory.iceCubes.RemoveRange(0, 15 * recipe.amountOfIceCubes);
+                cupsLeftInPitcher = 15;
+            }
         }
     }
 }

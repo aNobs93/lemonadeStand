@@ -12,19 +12,19 @@ namespace LemonadeStand_3DayStarter
         public int temperature;
         private List<string> weatherConditions = new List<string>() {"Cloudy", "Rainy", "Overcast", "Hot", "Clear Skies", "Hazy" };
         private List<int> weatherTemperature = new List<int>() {61, 92, 82, 55, 46, 102, 34, 49 };
-        public Random rnd = new Random();
-        public Weather()
+        //public Random rnd = new Random();
+        public Weather(Random random)
         {
-            ChooseWeather();
-            ChooseTemperature();
+            ChooseWeather(random);
+            ChooseTemperature(random);
         }
-        public void ChooseWeather()
+        public void ChooseWeather(Random random)
         {
-            int n = rnd.Next(0, 5);
+            int n = random.Next(0, 5);
             condition = weatherConditions[n];            
         }
 
-        public void ChooseTemperature()
+        public void ChooseTemperature(Random rnd)
         {
             int n = rnd.Next(0, 7);
             temperature = weatherTemperature[n];

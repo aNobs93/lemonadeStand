@@ -18,6 +18,7 @@ namespace LemonadeStand_3DayStarter
         // constructor (SPAWNER)
         public Player()
         {
+            pitcher = new Pitcher();
             inventory = new Inventory();
             recipe = new Recipe(inventory);
             wallet = new Wallet();

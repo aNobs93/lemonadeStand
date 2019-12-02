@@ -102,6 +102,7 @@ namespace LemonadeStand_3DayStarter
             double amountSpent = 0;
             while(storeRef != "")
             {
+                DisplayMoney(player);
                 Console.WriteLine("Welcome to the good ole store what would you like to purchase?\nPlease enter one of the following you would like to purchase.\nLemons/Sugar/Cubes/Cups/ start to start game or quit to exit game.");
                  storeRef = Console.ReadLine().ToLower().Trim();
                 switch (storeRef)
@@ -143,13 +144,14 @@ namespace LemonadeStand_3DayStarter
 
         public static void DisplayPopularity(Day day)
         {
-            Console.WriteLine("Today you had a total of " + day.customers.Count + " pass by your stand.");
-            Console.WriteLine("Out of " + day.customers.Count + ", only " + day.customersBought + " bought your lemonade.");
+            Console.WriteLine("Today you had a total of " + day.customers.Count + " potential customers pass by your stand.");
+            Console.WriteLine("Out of " + day.customers.Count + " potential customers, " + day.customersBought + " bought your lemonade.");
         }
 
         public static void DisplayDailyIncome(Day day)
         {
             Console.WriteLine("Your daily income was $ " + day.dailyIncome);
+            Console.WriteLine("Your daily profit was $ " + day.moneyProfit);
         }
 
 

@@ -38,7 +38,7 @@ namespace LemonadeStand_3DayStarter
 
         public bool DidCustomerBuy(Recipe recipe, Weather weather)
         {
-            if(recipe.amountOfLemons >= lemonPref - 3 && recipe.amountOfSugarCubes >= sugarPref -3 && weather.temperature >= tempPref - 20 && weather.temperature <= tempPref + 20)
+            if(recipe.amountOfLemons >= lemonPref - 1 && recipe.amountOfSugarCubes >= sugarPref -1 && weather.temperature >= tempPref - 5 || weather.temperature <= tempPref + 5 && recipe.amountOfLemons >= lemonPref - 1 && recipe.amountOfSugarCubes >= sugarPref - 1)
             {
                 return true;
             }

@@ -13,8 +13,11 @@ namespace LemonadeStand_3DayStarter
         public List<Customer> customers = new List<Customer>() { };
         public int customersBought;
         public double dailyIncome;
-        public double MoneySpent;
-
+        public double moneyProfit;
+        public Day()
+        {
+            weather = new Weather();
+        }
         public void GenerateCustomers()
         {
             int n = rnd.Next(60, 120);
@@ -25,14 +28,18 @@ namespace LemonadeStand_3DayStarter
                 
             }
         }
-        public void RunDay(Player player, Store store)
+        public void RunDay(Player player, Store store, Day day)
         {
             UserInterface.DisplayMoney(player);
             UserInterface.DisplayInventory(player.inventory);
-            UserInterface.StoreMenu(player, store);
+            double dailyAmoutSpent = UserInterface.StoreMenu(player, store);
             UserInterface.DisplayInventory(player.inventory);
             player.recipe.SetUpRecipe();
+            GenerateCustomers();
             SellLemonade(player);
+            DailyProfit(player, dailyAmoutSpent);
+            UserInterface.DisplayPopularity(day);
+            UserInterface.DisplayDailyIncome(day);
 
 
 
@@ -55,19 +62,20 @@ namespace LemonadeStand_3DayStarter
             }
         }
 
-        public void DailyProfit(Player player)
+        public void DailyProfit(Player player, double dailyAmountSpent)
         {
-            dailyIncome = customersBought * player.recipe.pricePerCup - DailyAmountSpent();
+            dailyIncome = customersBought * player.recipe.pricePerCup;
+            moneyProfit = dailyIncome - dailyAmountSpent;
         }
 
-        public double DailyAmountSpent(Store store)
-        {
-            double dailyAmountSpent = 5;
+        //public double DailyAmountSpent(Player player, Store store)
+        //{
+        //    double dailyAmountSpent = UserInterface.StoreMenu(player, store);
 
-            return dailyAmountSpent;
+        //    return dailyAmountSpent;
 
 
-        }
+        //}
 
     }
 }

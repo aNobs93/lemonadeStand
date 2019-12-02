@@ -34,7 +34,7 @@ namespace LemonadeStand_3DayStarter
                for (int i = 0; i < 7; i++)
 			{
             
-                days[i].RunDay(player, store);
+                days[i].RunDay(player, store, days[i]);
 
 			}
             

@@ -13,9 +13,12 @@ namespace LemonadeStand_3DayStarter
         private Player player;
         private List<Day> days = new List<Day>() {};
         private int currentDay;
+        private double endIncome;
+        private double endProfit;
 
         public Game()
         {
+            endProfit = 0;
             random = new Random();
             player = new Player();
             store = new Store();
@@ -37,8 +40,10 @@ namespace LemonadeStand_3DayStarter
 			{
             
                 days[i].RunDay(player, store, days[i], player.recipe, player.inventory, random);
+                endProfit += days[i].DailyProfit(player);
 
 			}
+            UserInterface.EndGameCredits(endProfit);
             
         }
 

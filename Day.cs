@@ -14,6 +14,7 @@ namespace LemonadeStand_3DayStarter
         public int customersBought;
         public double dailyIncome;
         public double moneyProfit;
+        double dailyAmountSpent;
         public Day(Random random)
         {
             weather = new Weather(random);
@@ -30,15 +31,14 @@ namespace LemonadeStand_3DayStarter
         }
         public void RunDay(Player player, Store store, Day day, Recipe recipe, Inventory inventory, Random random)
         {
-            UserInterface.DisplayMoney(player);
             UserInterface.DisplayInventory(player.inventory);
-            double dailyAmoutSpent = UserInterface.StoreMenu(player, store);
+            dailyAmountSpent = UserInterface.StoreMenu(player, store);
             UserInterface.DisplayInventory(player.inventory);
             player.recipe.SetUpRecipe();
             GenerateCustomers(random);
             player.pitcher.CreatePitcher(recipe, inventory);
             SellLemonade(player, recipe, inventory);
-            DailyProfit(player, dailyAmoutSpent);
+            DailyProfit(player);
             UserInterface.DisplayPopularity(day);
             UserInterface.DisplayDailyIncome(day);
 
@@ -70,10 +70,11 @@ namespace LemonadeStand_3DayStarter
             }
         }
 
-        public void DailyProfit(Player player, double dailyAmountSpent)
+        public double DailyProfit(Player player)
         {
             dailyIncome = customersBought * player.recipe.pricePerCup;
             moneyProfit = dailyIncome - dailyAmountSpent;
+            return moneyProfit;
         }
 
         //public double DailyAmountSpent(Player player, Store store)

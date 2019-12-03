@@ -154,6 +154,17 @@ namespace LemonadeStand_3DayStarter
             Console.WriteLine("Your daily profit was $ " + day.moneyProfit);
         }
 
+        public static void EndGameCredits(double endProfit)
+        {
+            Console.WriteLine("Your total profit after 7 days was: $ " + endProfit);   
+        }
+
+        public static void DaysPlaying()
+        {
+            Console.WriteLine("Please enter the amount of days you would like to play\nEither 7/14/30");
+            Console.ReadLine();
+
+        }
 
     }
 }

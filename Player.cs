@@ -24,6 +24,7 @@ namespace LemonadeStand_3DayStarter
             wallet = new Wallet();
         }
 
+
         // member methods (CAN DO)
     }
 }

@@ -51,6 +51,7 @@ namespace LemonadeStand_3DayStarter
         {
             for (int i = 0; i < customers.Count; i++)
             {
+
                 if(customers[i].DidCustomerBuy(player.recipe, weather))
                 {
                     customersBought++;
@@ -60,7 +61,11 @@ namespace LemonadeStand_3DayStarter
                     {
                         player.pitcher.CreatePitcher(recipe, inventory);
                         player.pitcher.cupsLeftInPitcher--;
-                    }else
+                    }
+                    if(player.pitcher.cupsLeftInPitcher == 0)
+                    {
+                        return;
+                    }
                     player.pitcher.cupsLeftInPitcher --;
                     //sell cup
                     //Need to subtract cup from pitcher

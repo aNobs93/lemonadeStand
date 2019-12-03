@@ -12,8 +12,8 @@ namespace LemonadeStand_3DayStarter
         private Store store;
         private Player player;
         private List<Day> days = new List<Day>() {};
+        private List<int> forcast = new List<int>() {};
         private int currentDay;
-        private double endIncome;
         private double endProfit;
 
         public Game()
@@ -32,13 +32,25 @@ namespace LemonadeStand_3DayStarter
 
 			}
         }
+
+        public void GenerateForecast()
+        {
+            for(int i = 0; i < days.Count; i++)
+            {
+                forcast.Add(days[i].weather.temperature);
+            }
+
+        }
+
         public void RunGame()
         {
             UserInterface.GameInstructions();
             BuildDays();
+            GenerateForecast();
                for (int i = 0; i < 7; i++)
 			{
-            
+
+                UserInterface.WeatherForcast(forcast[i]);
                 days[i].RunDay(player, store, days[i], player.recipe, player.inventory, random);
                 endProfit += days[i].DailyProfit(player);
 

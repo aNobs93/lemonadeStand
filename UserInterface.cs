@@ -166,5 +166,11 @@ namespace LemonadeStand_3DayStarter
 
         }
 
+        public static void WeatherForcast(int forcast)
+        {
+            Console.WriteLine("Todays Weather will be a low of " + (forcast - 10));
+            Console.WriteLine("Along with a high of " + (forcast + 10));
+        }
+
     }
 }

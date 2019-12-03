@@ -183,5 +183,12 @@ namespace LemonadeStand_3DayStarter
             Console.WriteLine("Along with a high of " + (forcast + 10));
         }
 
+        public static string PlayAgain()
+        {
+            Console.WriteLine("Would you like to try again?!\nYes or No");
+            string answer = Console.ReadLine().ToLower().Trim();
+            return answer;
+        }
+
     }
 }

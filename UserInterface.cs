@@ -159,10 +159,21 @@ namespace LemonadeStand_3DayStarter
             Console.WriteLine("Your total profit after 7 days was: $ " + endProfit);   
         }
 
-        public static void DaysPlaying()
+        public static int DaysPlaying()//sollid design for the ability to cahnge amount of days than just 7 days,
         {
             Console.WriteLine("Please enter the amount of days you would like to play\nEither 7/14/30");
-            Console.ReadLine();
+            int numDays = Convert.ToInt32(Console.ReadLine().Trim());
+            switch (numDays)
+            {
+                case 7:
+                case 14:    
+                case 30:
+                    return numDays;
+                default:
+                    Console.WriteLine("Invalid amount of days, please retry.");
+                    return DaysPlaying();
+                    
+            }
 
         }
 

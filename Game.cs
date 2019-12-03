@@ -15,6 +15,7 @@ namespace LemonadeStand_3DayStarter
         private List<int> forcast = new List<int>() {};
         private int currentDay;
         private double endProfit;
+        private int DaysPlaying;
 
         public Game()
         {
@@ -25,7 +26,7 @@ namespace LemonadeStand_3DayStarter
         }
         public void BuildDays()
         {
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < DaysPlaying; i++)
 			{
                 Day day = new Day(random);
                 days.Add(day);
@@ -42,12 +43,19 @@ namespace LemonadeStand_3DayStarter
 
         }
 
+        public int HowManyDays()
+        {
+            DaysPlaying = UserInterface.DaysPlaying();
+            return DaysPlaying;
+        }
+
         public void RunGame()
         {
             UserInterface.GameInstructions();
+            HowManyDays();
             BuildDays();
             GenerateForecast();
-               for (int i = 0; i < 7; i++)
+               for (int i = 0; i < DaysPlaying; i++)
 			{
 
                 UserInterface.WeatherForcast(forcast[i]);

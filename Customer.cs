@@ -15,6 +15,7 @@ namespace LemonadeStand_3DayStarter
         int sugarPref;
         int tempPref;
         Random rnd;
+        double pricePref;
 
         public Customer(Random random)
         {
@@ -32,15 +33,17 @@ namespace LemonadeStand_3DayStarter
 
         public void CustomerPref()
         {
-            lemonPref = rnd.Next(0, 10);
-            sugarPref = rnd.Next(0, 10);
+            lemonPref = rnd.Next(1, 10);
+            sugarPref = rnd.Next(1, 10);
             tempPref = rnd.Next(30, 110);
-
+            pricePref = rnd.Next(10, 100);
+            pricePref = (pricePref / 100);
+            
         }
 
         public bool DidCustomerBuy(Recipe recipe, Weather weather)
         {
-            if((recipe.amountOfLemons == lemonPref -1 || recipe.amountOfSugarCubes == sugarPref -1) && (weather.temperature >= tempPref - 20 || weather.temperature >= tempPref + 20) )
+            if((recipe.amountOfLemons == lemonPref -2 || recipe.amountOfSugarCubes == sugarPref -2) && (weather.temperature >= tempPref - 20 || weather.temperature >= tempPref + 20) && (recipe.pricePerCup <= pricePref) )
             {
                 return true;
             }

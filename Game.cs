@@ -13,7 +13,6 @@ namespace LemonadeStand_3DayStarter
         private Player player;
         private List<Day> days = new List<Day>() { };
         private List<int> forcast = new List<int>() { };
-        private int currentDay;
         private double endProfit;
         private int DaysPlaying;
         private string answer;
@@ -64,7 +63,7 @@ namespace LemonadeStand_3DayStarter
                 endProfit += days[i].DailyProfit(player);
 
             }
-            UserInterface.EndGameCredits(endProfit);
+            UserInterface.EndGameCredits(endProfit, days.Count);
             Retry();
 
         }

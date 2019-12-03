@@ -18,6 +18,7 @@ namespace LemonadeStand_3DayStarter
             while (!userInputIsAnInteger || quantityOfItem < 0)
             {
                 Console.WriteLine("How many " + itemsToGet + " would you like to buy?");
+                System.Threading.Thread.Sleep(300);
                 Console.WriteLine("Please enter a positive integer (or 0 to cancel):");
 
                 userInputIsAnInteger = Int32.TryParse(Console.ReadLine(), out quantityOfItem);
@@ -28,11 +29,13 @@ namespace LemonadeStand_3DayStarter
 
         public static void GameInstructions()
         {
-
-            Console.WriteLine("Welcome to your lemonade stand!\nYou will have 7 days to make the most profit as possible!\nYou'll have complete control over your buisness, including pricing, quality control, inventory control, and purchasing supplies.\nBuy your ingredients, set your recipe, and start selling!");
+            Console.WriteLine("Loading.............");
+            System.Threading.Thread.Sleep(3000);
+            Console.Clear();
+            Console.WriteLine("Welcome to your lemonade stand!\nYou will have either 7, 14, or 30 days to make the most profit as possible!\nYou'll have complete control over your buisness, including pricing, quality control, inventory control, and purchasing supplies.\nBuy your ingredients, set your recipe, and start selling!");
             Console.WriteLine("First thing you'll have to worry about is your recipe, make sure you buy enough of all your ingredients, or you won't be able to sell.");
-            Console.WriteLine("You'll also have to deal with the weather, which will play a big part when customers are deciding whether or not to buy your lemonade, so make sure to read the weather report every day!");
-            Console.WriteLine("When the temperature drops, or the weather turns bad (overcast, cloudy, rain), don't expect them to buy nearly as much as the would on a hot, hazy day, so buy accoringly\nFeel free to set your prices higher on those hot, muggy days too, as you'll make more profit, even if you sell a bit less lemonade.");
+            Console.WriteLine("Each customer has there own preference on Sugar, Lemons, Temperature, and Price they're willing to pay");
+            Console.WriteLine("Good Luck, And Have Fun!");
             Console.WriteLine("Press enter to continue");
             Console.ReadLine();
             Console.Clear();
@@ -41,6 +44,7 @@ namespace LemonadeStand_3DayStarter
         {
             Console.WriteLine("Please enter the number of lemons for your secret recipe!");
             int amountOfLemons = Convert.ToInt32(Console.ReadLine().Trim());
+            System.Threading.Thread.Sleep(300);
             if (amountOfLemons <= inventory.lemons.Count) 
             {
                 return amountOfLemons;
@@ -56,6 +60,7 @@ namespace LemonadeStand_3DayStarter
             Console.WriteLine("Time to make our secret recipe!");
             Console.WriteLine("Please enter the number of sugarcubes for your secret recipe!");
             int amountOfSugarCubes = Convert.ToInt32(Console.ReadLine().Trim());
+            System.Threading.Thread.Sleep(300);
             if (amountOfSugarCubes <= inventory.sugarCubes.Count)
             {
                 return amountOfSugarCubes;
@@ -70,6 +75,7 @@ namespace LemonadeStand_3DayStarter
         {
             Console.WriteLine("Please enter the number of ice cubes per cup for your secret recipe!");
             int amountOfIceCubes = Convert.ToInt32(Console.ReadLine().Trim());
+            System.Threading.Thread.Sleep(300);
             if (amountOfIceCubes <= inventory.iceCubes.Count)
             {
                 return amountOfIceCubes;
@@ -82,18 +88,24 @@ namespace LemonadeStand_3DayStarter
 
         public static double PricePerCup(Inventory inventory)
         {
-            Console.WriteLine("Please enter your price per cup!");
+            Console.WriteLine("Please enter your price per cup!\n for example 1.00 or .20");
             double pricePerCup = Convert.ToDouble(Console.ReadLine().Trim());
+            System.Threading.Thread.Sleep(300);
+            Console.Clear();
             return pricePerCup;
         }
 
         public static void DisplayInventory(Inventory inventory)
         {
             Console.WriteLine("You currently have " + inventory.lemons.Count + " lemons");
+            System.Threading.Thread.Sleep(300);
             Console.WriteLine("You currently have " + inventory.sugarCubes.Count + " sugarcubes");
+            System.Threading.Thread.Sleep(300);
             Console.WriteLine("You currently have " + inventory.iceCubes.Count + " icecubes");
+            System.Threading.Thread.Sleep(300);
             Console.WriteLine("You currently have " + inventory.cups.Count + " cups");
-            
+            System.Threading.Thread.Sleep(300);
+
         }
 
         public static double StoreMenu(Player player, Store store)
@@ -104,23 +116,29 @@ namespace LemonadeStand_3DayStarter
             {
                 DisplayMoney(player);
                 Console.WriteLine("Welcome to the good ole store what would you like to purchase?\nPlease enter one of the following you would like to purchase.\nLemons/Sugar/Cubes/Cups/ start to start game or quit to exit game.");
-                 storeRef = Console.ReadLine().ToLower().Trim();
+                System.Threading.Thread.Sleep(1000);
+                storeRef = Console.ReadLine().ToLower().Trim();
+                Console.Clear();
                 switch (storeRef)
                 {
                     case "lemons":
                         Console.WriteLine("Lemons are currently $ " + store.PricePerLemon + " each.");
+                        System.Threading.Thread.Sleep(300);
                         amountSpent += store.SellLemons(player);
                         break;
                     case "sugar":
                         Console.WriteLine("SugarCubes are currently $ " + store.PricePerSugarCube + " each.");
+                        System.Threading.Thread.Sleep(300);
                         amountSpent += store.SellSugarCubes(player);
                         break;
                     case "cubes":
                         Console.WriteLine("IceCubes are currently $ " + store.PricePerIceCube + " each.");
+                        System.Threading.Thread.Sleep(300);
                         amountSpent += store.SellIceCubes(player);
                         break;
                     case "cups":
                         Console.WriteLine("Cups are currently $ " + store.PricePerCup + " each.");
+                        System.Threading.Thread.Sleep(300);
                         amountSpent += store.SellCups(player);
                         break;
                     case "start":
@@ -131,7 +149,8 @@ namespace LemonadeStand_3DayStarter
                         break;
                     default:
                         Console.WriteLine("Please try again and enter a valid item");
-                        break;
+                        System.Threading.Thread.Sleep(300);
+                        return StoreMenu(player, store);
                 }
             }
             return amountSpent;
@@ -140,39 +159,65 @@ namespace LemonadeStand_3DayStarter
         public static void DisplayMoney(Player player)
         {
             Console.WriteLine("You currently have $ " + player.wallet.Money);
+            System.Threading.Thread.Sleep(1000);
         }
 
         public static void DisplayPopularity(Day day)
         {
             Console.WriteLine("Today you had a total of " + day.customers.Count + " potential customers pass by your stand.");
+            System.Threading.Thread.Sleep(1000);
             Console.WriteLine("Out of " + day.customers.Count + " potential customers, " + day.customersBought + " bought your lemonade.");
+            System.Threading.Thread.Sleep(1000);
         }
 
         public static void DisplayDailyIncome(Day day)
         {
             Console.WriteLine("Your daily income was $ " + day.dailyIncome);
+            System.Threading.Thread.Sleep(1000);
             Console.WriteLine("Your daily profit was $ " + day.moneyProfit);
+            Console.WriteLine("Hit Enter To Continue.");
+            Console.ReadLine();
+            Console.Clear();
         }
 
-        public static void EndGameCredits(double endProfit)
+        public static void EndGameCredits(double endProfit,int totDays)
         {
-            Console.WriteLine("Your total profit after 7 days was: $ " + endProfit);   
+            Console.WriteLine("Your total profit after " + totDays + " days was: $ " + endProfit);
+            System.Threading.Thread.Sleep(1000);
         }
 
-        public static int DaysPlaying()//sollid design for the ability to cahnge amount of days than just 7 days,
+        public static int DaysPlaying()
         {
-            Console.WriteLine("Please enter the amount of days you would like to play\nEither 7/14/30");
-            int numDays = Convert.ToInt32(Console.ReadLine().Trim());
-            switch (numDays)
+            try
             {
-                case 7:
-                case 14:    
-                case 30:
-                    return numDays;
-                default:
-                    Console.WriteLine("Invalid amount of days, please retry.");
-                    return DaysPlaying();
-                    
+                Console.WriteLine("Please enter the amount of days you would like to play\nEither 7/14/30");
+                int numDays = Convert.ToInt32(Console.ReadLine().Trim());
+                switch (numDays)
+                {
+                    case 7:
+                    case 14:
+                    case 30:
+                        return numDays;
+                    default:
+                        Console.WriteLine("Invalid amount of days, please retry.");
+                        System.Threading.Thread.Sleep(1000);
+                        return DaysPlaying();
+
+                }
+            }
+            catch (System.FormatException)
+            {
+                Console.WriteLine("Please enter a valid amount of days.");
+                System.Threading.Thread.Sleep(1000);
+                Console.Clear();
+                return DaysPlaying();
+            }
+            catch (System.OverflowException)
+            {
+                Console.WriteLine("Please enter a valid amount of days.");
+                System.Threading.Thread.Sleep(1000);
+                Console.Clear();
+                return DaysPlaying();
             }
 
         }
@@ -180,7 +225,9 @@ namespace LemonadeStand_3DayStarter
         public static void WeatherForcast(int forcast)
         {
             Console.WriteLine("Todays Weather will be a low of " + (forcast - 10));
+            System.Threading.Thread.Sleep(1000);
             Console.WriteLine("Along with a high of " + (forcast + 10));
+            System.Threading.Thread.Sleep(1000);
         }
 
         public static string PlayAgain()

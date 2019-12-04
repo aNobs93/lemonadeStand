@@ -41,6 +41,7 @@ namespace LemonadeStand_3DayStarter
             DailyProfit(player);
             UserInterface.DisplayPopularity(day);
             UserInterface.DisplayDailyIncome(day);
+            player.inventory.iceCubes = new List<IceCube>();
 
 
 
@@ -67,9 +68,7 @@ namespace LemonadeStand_3DayStarter
                         return;
                     }
                     player.pitcher.cupsLeftInPitcher --;
-                    //sell cup
-                    //Need to subtract cup from pitcher
-                    //Start here on monday, need to keep a running total of money showing proift or loss. i need to make it so i can't go into debt with my wallet and i need to show the popularity of my stand.
+                    
                 }
 
             }
@@ -82,14 +81,6 @@ namespace LemonadeStand_3DayStarter
             return moneyProfit;
         }
 
-        //public double DailyAmountSpent(Player player, Store store)
-        //{
-        //    double dailyAmountSpent = UserInterface.StoreMenu(player, store);
-
-        //    return dailyAmountSpent;
-
-
-        //}
 
     }
 }

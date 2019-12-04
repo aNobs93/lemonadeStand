@@ -34,7 +34,7 @@ namespace LemonadeStand_3DayStarter
             Console.Clear();
             Console.WriteLine("Welcome to your lemonade stand!\nYou will have either 7, 14, or 30 days to make the most profit as possible!\nYou'll have complete control over your buisness, including pricing, quality control, inventory control, and purchasing supplies.\nBuy your ingredients, set your recipe, and start selling!");
             Console.WriteLine("First thing you'll have to worry about is your recipe, make sure you buy enough of all your ingredients, or you won't be able to sell.");
-            Console.WriteLine("Each customer has there own preference on Sugar, Lemons, Temperature, and Price they're willing to pay");
+            Console.WriteLine("Each customer has there own preference on Sugar, Lemons, Temperature, and Price they're willing to pay.\nOh an your ice melts after every day!");
             Console.WriteLine("Good Luck, And Have Fun!");
             Console.WriteLine("Press enter to continue");
             Console.ReadLine();
@@ -180,7 +180,7 @@ namespace LemonadeStand_3DayStarter
             Console.Clear();
         }
 
-        public static void EndGameCredits(double endProfit,int totDays)
+        public static void EndGameCredits(double endProfit,int totDays)//Single Respomsibility Principle
         {
             Console.WriteLine("Your total profit after " + totDays + " days was: $ " + endProfit);
             System.Threading.Thread.Sleep(1000);
